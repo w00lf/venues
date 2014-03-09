@@ -1,0 +1,41 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @venue.title
+%p
+  %b Price:
+  = @venue.price
+%p
+  %b Description:
+  = @venue.description
+%p
+  %b Capasity:
+  = @venue.capasity
+%p
+  %b Time of work:
+  = @venue.time_from
+%p
+  %b Time of work:
+  = @venue.time_to
+%p
+  %b Address:
+  = @venue.address
+%p
+  %b Equipment:
+  = @venue.equipment
+
+= link_to 'Edit', edit_venue_path(@venue)
+\|
+= link_to 'Back', venues_path
+
+= simple_form_for [@venue, @venue.events.build] do |f|
+  = f.input :title
+  = f.input :description
+  = f.submit
+
+- @venue.reload.events.each do |event|
+  %p
+    = link_to event.title, venue_event_path(event)
+  %p
+    = event.description

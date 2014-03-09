@@ -1,0 +1,22 @@
+%p#notice= notice
+
+%p
+  %b Venue:
+  = @event.venue_id
+%p
+  %b Title:
+  = @event.title
+%p
+  %b Desciption:
+  = @event.description
+
+= link_to 'Edit', edit_venue_event_path(@event)
+\|
+= link_to 'Back', venue_path(@venue)
+
+=  simple_form_for [@venue, @event, @event.entry_photos.build] do |f|
+  = f.input :photo
+  = f.submit
+
+- @event.entry_photos.each do |entry_photo|
+  = image_tag entry_photo.photo.url

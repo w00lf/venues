@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  price: 9.99
+  description: MyText
+  capasity: 1
+  time_of_work: MyString
+  address: MyString
+  equipment: MyString
+
+two:
+  title: MyString
+  price: 9.99
+  description: MyText
+  capasity: 1
+  time_of_work: MyString
+  address: MyString
+  equipment: MyString
