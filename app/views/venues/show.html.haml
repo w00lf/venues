@@ -36,6 +36,6 @@
 
 - @venue.reload.events.each do |event|
   %p
-    = link_to event.title, venue_event_path(event)
+    = link_to event.title, event_path(event)
   %p
     = event.description

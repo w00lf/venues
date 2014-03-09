@@ -1,10 +1,12 @@
 class EventsController < ApplicationController
-  before_filter :find_venue
+  before_filter :find_venue, except: [:index, :show]
+  before_filter :authenticate_user!, only: [:user_go]
+
 
   # GET /events
   # GET /events.json
   def index
-    @events = @venue.events.paginate(page: params[:page], per_page: params[:per_page])
+    @events = Event.paginate(page: params[:page], per_page: params[:per_page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +17,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @event = @venue.events.find(params[:id])
+    @event = Event.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,6 +39,16 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = @venue.events.find(params[:id])
+  end
+
+  def user_go
+    @event = @venue.events.find(params[:id])
+    respond_to do |format|
+      if @event.users << current_user
+        format.html { redirect_to :back, notice: 'You are signed to event!' }
+        # format.json { render json: @event, status: :created, location: @event }
+      end
+    end
   end
 
   # POST /events

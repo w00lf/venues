@@ -1,1 +1,9 @@
 = t(:lorem)
+%hr
+%h3 Best places:
+= link_to 'Venues', root_path(venues: true)
+= link_to 'Events', root_path(events: true)
+
+- @entries.each do |entry|
+  %h5= entry.title
+  = image_tag entry.entry_photos.first.photo.url(:thumb) unless entry.entry_photos.blank?

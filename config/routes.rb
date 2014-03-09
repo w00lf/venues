@@ -2,9 +2,14 @@ Antikafe::Application.routes.draw do
   devise_for :users
 
   resources :venues do
-    resources :events do
+    resources :events, except: [:index, :show] do
       resources :entry_photos, only: [:create]
+      post 'user_go', :on => :member
     end
+    resources :entry_photos, only: [:create]
+  end
+
+  resources :events, only: [:index, :show] do
     resources :entry_photos, only: [:create]
   end
 
