@@ -2,13 +2,13 @@ class CreateVenues < ActiveRecord::Migration
   def change
     create_table :venues do |t|
       t.string :title
-      t.integer :price
       t.text :description
       t.integer :capasity
-      t.datetime :time_from
-      t.datetime :time_to
+      t.string :price
+      t.string :working_time
       t.string :address
-      t.string :equipment
+      t.string :metro
+      t.boolean :visible
       t.integer :user_id
 
       t.timestamps

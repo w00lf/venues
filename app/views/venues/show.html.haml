@@ -4,38 +4,32 @@
   %b Title:
   = @venue.title
 %p
-  %b Price:
-  = @venue.price
-%p
   %b Description:
   = @venue.description
 %p
   %b Capasity:
   = @venue.capasity
 %p
-  %b Time of work:
-  = @venue.time_from
+  %b Price:
+  = @venue.price
 %p
-  %b Time of work:
-  = @venue.time_to
+  %b Working time:
+  = @venue.working_time
 %p
   %b Address:
   = @venue.address
 %p
-  %b Equipment:
-  = @venue.equipment
+  %b Metro:
+  = @venue.metro
+%p
+  %b Event Types:
+  - @venue.event_types.each do |type|
+    = type.title
 
 = link_to 'Edit', edit_venue_path(@venue)
 \|
 = link_to 'Back', venues_path
 
-= simple_form_for [@venue, @venue.events.build] do |f|
-  = f.input :title
-  = f.input :description
-  = f.submit
-
-- @venue.reload.events.each do |event|
-  %p
-    = link_to event.title, event_path(event)
-  %p
-    = event.description
+-if @venue.latitude && @venue.longitude
+  %h3 map
+  / %iframe{ width: "300", height: "170", frameborder: "0", scrolling: "no", marginheight: "0", marginwidth: "0", src: "https://maps.google.com/maps?q=#{@venue.latitude}%20#{@venue.longitude}&hl=es;z=14&amp;output=embed"}

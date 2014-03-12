@@ -1,34 +1,26 @@
-= form_for @venue do |f|
-  - if @venue.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@venue.errors.count, "error")} prohibited this venue from being saved:"
-      %ul
-        - @venue.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for @venue do |f|
+  .field
+    = f.input :title
+  .field
 
+    = f.input :description, as: :text
   .field
-    = f.label :title
-    = f.text_field :title
+
+    = f.select :capasity, (10..100).step(10).map {|n| ["before #{n} man", n]}
   .field
-    = f.label :price
-    = f.text_field :price
+
+    = f.input :price
   .field
-    = f.label :description
-    = f.text_area :description
+
+    = f.input :working_time
   .field
-    = f.label :capasity
-    = f.number_field :capasity
+
+    = f.input :address
   .field
-    = f.label :time_from
-    = f.text_field :time_from
+
+    = f.input :metro
   .field
-    = f.label :time_to
-    = f.text_field :time_to
-  .field
-    = f.label :address
-    = f.text_field :address
-  .field
-    = f.label :equipment
-    = f.text_field :equipment
+    = f.association  :event_types, as: :check_boxes
   .actions
     = f.submit 'Save'
+= render 'event_types/form'

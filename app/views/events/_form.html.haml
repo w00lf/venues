@@ -7,13 +7,22 @@
           %li= msg
 
   .field
+    = f.label :user_id
+    = f.number_field :user_id
+  .field
+    = f.label :start_at
+    = f.datetime_select :start_at
+  .field
+    = f.label :hours
+    = f.text_field :hours
+  .field
     = f.label :venue_id
     = f.number_field :venue_id
   .field
     = f.label :title
     = f.text_field :title
   .field
-    = f.label :desciption
-    = f.text_area :desciption
+    = f.label :description
+    = f.text_area :description
   .actions
     = f.submit 'Save'

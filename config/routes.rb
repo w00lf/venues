@@ -1,5 +1,14 @@
 Antikafe::Application.routes.draw do
+  resources :event_types, only: [:create]
+
+  resources :events
+
+
   devise_for :users
+
+  devise_for :admins
+
+  resources :venues
 
   resources :venues do
     resources :events, except: [:index, :show] do

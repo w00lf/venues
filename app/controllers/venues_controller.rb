@@ -1,4 +1,5 @@
 class VenuesController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :edit, :update, :create]
   # GET /venues
   # GET /venues.json
   def index
@@ -40,7 +41,7 @@ class VenuesController < ApplicationController
   # POST /venues
   # POST /venues.json
   def create
-    @venue = Venue.new(params[:venue])
+    @venue = current_user.venues.build(params[:venue])
 
     respond_to do |format|
       if @venue.save

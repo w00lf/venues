@@ -2,18 +2,20 @@
 
 one:
   title: MyString
-  price: 9.99
   description: MyText
   capasity: 1
-  time_of_work: MyString
+  price: MyString
+  working_time: MyString
   address: MyString
-  equipment: MyString
+  metro: MyString
+  user_id: 1
 
 two:
   title: MyString
-  price: 9.99
   description: MyText
   capasity: 1
-  time_of_work: MyString
+  price: MyString
+  working_time: MyString
   address: MyString
-  equipment: MyString
+  metro: MyString
+  user_id: 1

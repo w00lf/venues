@@ -1,11 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  user_id: 1
+  start_at: 2014-03-12 17:35:04
+  hours: MyString
   venue_id: 1
   title: MyString
-  desciption: MyText
+  description: MyText
 
 two:
+  user_id: 1
+  start_at: 2014-03-12 17:35:04
+  hours: MyString
   venue_id: 1
   title: MyString
-  desciption: MyText
+  description: MyText

@@ -3,13 +3,13 @@
 %table
   %tr
     %th Title
-    %th Price
     %th Description
     %th Capasity
-    %th Time from
-    %th Time to
+    %th Price
+    %th Working time
     %th Address
-    %th Equipment
+    %th Metro
+    %th User
     %th
     %th
     %th
@@ -17,13 +17,13 @@
   - @venues.each do |venue|
     %tr
       %td= venue.title
-      %td= venue.price
       %td= venue.description
       %td= venue.capasity
-      %td= venue.time_from
-      %td= venue.time_to
+      %td= venue.price
+      %td= venue.working_time
       %td= venue.address
-      %td= venue.equipment
+      %td= venue.metro
+      %td= venue.user_id
       %td= link_to 'Show', venue
       %td= link_to 'Edit', edit_venue_path(venue)
       %td= link_to 'Destroy', venue, :method => :delete, :data => { :confirm => 'Are you sure?' }

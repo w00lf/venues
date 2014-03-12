@@ -1,7 +1,14 @@
 %p#notice= notice
-- unless @event.users.exists?(current_user)
-  %button
-    = link_to 'Sign for', user_go_venue_event_path(@event), method: :post
+
+%p
+  %b User:
+  = @event.user_id
+%p
+  %b Start at:
+  = @event.start_at
+%p
+  %b Hours:
+  = @event.hours
 %p
   %b Venue:
   = @event.venue_id
@@ -9,22 +16,9 @@
   %b Title:
   = @event.title
 %p
-  %b Desciption:
+  %b Description:
   = @event.description
 
-= link_to 'Edit', edit_venue_event_path(@event)
+= link_to 'Edit', edit_event_path(@event)
 \|
-= link_to 'Back', :back
-
-=  simple_form_for [@event, @event.entry_photos.build] do |f|
-  = f.input :photo
-  = f.submit
-
-- @event.entry_photos.each do |entry_photo|
-  = image_tag entry_photo.photo.url
-
-%h3
-  will go:
-- @event.users.each do |user|
-  = user.email
-  = user.login
+= link_to 'Back', events_path
