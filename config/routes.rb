@@ -12,15 +12,11 @@ Antikafe::Application.routes.draw do
 
   resources :venues do
     resources :events, except: [:index, :show] do
-      resources :entry_photos, only: [:create]
       post 'user_go', :on => :member
     end
-    resources :entry_photos, only: [:create]
   end
 
-  resources :events, only: [:index, :show] do
-    resources :entry_photos, only: [:create]
-  end
+  resources :entry_photos, only: [:create]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

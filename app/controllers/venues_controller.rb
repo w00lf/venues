@@ -3,7 +3,7 @@ class VenuesController < ApplicationController
   # GET /venues
   # GET /venues.json
   def index
-    @venues = Venue.all
+    @venues = Venue.paginate(page: params[:page], per_page: params[:per_page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class VenuesController < ApplicationController
   # GET /venues/1
   # GET /venues/1.json
   def show
-    @venue = Venue.find(params[:id])
+    @venue = Venue.visible.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -45,7 +45,7 @@ class VenuesController < ApplicationController
 
     respond_to do |format|
       if @venue.save
-        format.html { redirect_to @venue, notice: 'Venue was successfully created.' }
+        format.html { redirect_to venues_path, notice: 'Venue was successfully created.' }
         format.json { render json: @venue, status: :created, location: @venue }
       else
         format.html { render action: "new" }

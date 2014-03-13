@@ -35,9 +35,11 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'gmaps4rails'
+gem 'underscore-rails'
+gem 'remotipart'
 
 gem 'haml-rails'
-gem 'jquery-rails'
 gem "twitter-bootstrap-rails"
 
 gem 'paperclip'

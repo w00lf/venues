@@ -2,7 +2,7 @@ class Venue < ActiveRecord::Base
   geocoded_by :address   # can also be an IP address
   after_validation :geocode
 
-  attr_accessible :address, :capasity, :description, :metro, :price, :title, :working_time, :event_type_ids #, :user_id
+  attr_accessible :address, :capasity, :description, :metro, :price, :title, :working_time, :event_type_ids, :entry_photo_ids #, :user_id
   validates :title, :address, :description, presence: true
 
   has_many :events
