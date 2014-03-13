@@ -5,13 +5,17 @@
 = link_to 'Events', root_path(events: true)
 
 %h3 Best venues
-
-- @venues.each do |venue|
-  %h5= venue.title
-  = image_tag venue.entry_photos.first.photo.url(:thumb) unless venue.entry_photos.blank?
+- if @venues.present?
+  - @venues.each do |venue|
+    %h5= venue.title
+    = image_tag venue.entry_photos.first.photo.url(:thumb) unless venue.entry_photos.blank?
+- else
+  No venues
   
 %h3 Best events
-
-- @events.each do |event|
-  %h5= event.title
-  = image_tag event.entry_photos.first.photo.url(:thumb) unless event.entry_photos.blank?
+- if @events.present?
+  - @events.each do |event|
+    %h5= event.title
+    = image_tag event.entry_photos.first.photo.url(:thumb) unless event.entry_photos.blank?
+- else
+  No events

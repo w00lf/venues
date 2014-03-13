@@ -1,3 +1,3 @@
-= simple_form_for EventType.new do |f|
+= simple_form_for EventType.new, remote: true, class: 'json-form'  do |f|
   = f.input :title
   = f.submit

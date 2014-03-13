@@ -15,3 +15,5 @@
 /tmp
 /public/system
 /db/schema.rb
+/config/private_info.yml
+.ruby-version

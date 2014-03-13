@@ -45,6 +45,14 @@ gem "will_paginate"
 
 gem 'devise'
 gem 'cancan'
+gem 'omniauth' 
+gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
+gem 'omniauth-yandex'
+gem 'omniauth-github'
+
 gem 'russian'
 gem 'enumerize'
 gem 'simple_form'
