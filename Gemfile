@@ -37,7 +37,7 @@ end
 gem 'jquery-rails'
 gem 'gmaps4rails'
 gem 'underscore-rails'
-gem 'remotipart'
+gem 'jquery-fileupload-rails'
 
 gem 'haml-rails'
 gem "twitter-bootstrap-rails"

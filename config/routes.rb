@@ -16,7 +16,7 @@ Antikafe::Application.routes.draw do
     end
   end
 
-  resources :entry_photos, only: [:create]
+  resources :entry_photos, only: [:create, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

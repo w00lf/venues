@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   validates :email, format: { with: /.+@.+\..+/, message: "Wrong email format" }, presence: true
 
   has_many :venues
+  has_many :entry_photos
 
   def self.find_for_common_oauth(auth, signed_in_resource=nil)
     email = auth.info.email || "#{auth.provider}_#{Devise.friendly_token[0,10]}@#{FAKE_EMAIL}"

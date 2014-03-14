@@ -7,7 +7,8 @@ $ ->
     handler = Gmaps.build("Google")
     mark = $('.marker')
     handler.buildMap
-      provider: {}
+      provider:
+        zoom: 15 
       internal:
         id: "map"
     , ->
@@ -18,8 +19,11 @@ $ ->
           url: "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png"
           width: 36
           height: 36
-
-        title: mark.data('title')
+        infowindow: mark.data('title')
+        visible: false
       ])
       handler.bounds.extendWith markers
-      handler.fitMapToBounds()
+      handler.map.centerOn(markers[0])
+
+  $(document).on 'ajax:complete', '.photo a', ->
+    $(this).parents('.field').remove()

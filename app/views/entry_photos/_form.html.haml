@@ -1,6 +1,16 @@
-= form_for(EntryPhoto.new, :html => { multipart: true }, :remote => true) do |f|
-  %div.field
-    = f.label :photo
-    = f.file_field :photo
-  %div.actions
-    = f.submit
+/ = form_for(EntryPhoto.new, :html => { multipart: true }, :remote => true) do |f|
+/   %div.field
+/     = f.label :photo
+/     = f.file_field :photo
+/   %div.actions
+/     = f.submit
+= form_for EntryPhoto.new, html: { multipart: true } do |f| 
+  = f.label :photo, t('.upload_new_file')
+  = f.file_field :photo, multiple: true, name: 'entry_photo[photo]'
+  = f.submit
+
+%script#template-upload{ type: "text/x-tmpl"}
+  %div.upload
+    {%=o.name%}
+    %div.progress
+      %div.bar{style:"width: 0%"}

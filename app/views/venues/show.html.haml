@@ -38,5 +38,5 @@
   %script{ src: '//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js', type: 'text/javascript'}
   %h3 map
   %div{ style: 'width: 800px;'}
-    %span.marker{ 'data-lat' => @venue.latitude, 'data-lon' => @venue.longitude}
+    %span.marker{ 'data-lat' => @venue.latitude, 'data-lon' => @venue.longitude, 'data-title' => @venue.title}
     %div#map{ style:'width: 800px; height: 400px;'}

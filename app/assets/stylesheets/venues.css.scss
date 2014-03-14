@@ -1,3 +1,22 @@
 // Place all the styles related to the venues controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.template {
+  display: none;
+}
+.photo {
+  width: 200px;
+  position: relative; 
+}
+.entry_photos .field .delete {
+  background: no-repeat url('cancel_upload.png');
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.entry_photos .field img {
+  width: 200px;
+}
