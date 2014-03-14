@@ -21,6 +21,13 @@
     = f.input :metro
   .field
     = f.association  :event_types, as: :check_boxes
+  .entry_photos
+    .field.template
+      = check_box_tag 'venue[entry_photo_ids][]'
+      = image_tag '', width: '200'
+    .field
+      = f.association  :entry_photos, as: :check_boxes, :label_method => lambda { |photo| image_tag(photo.photo.url, width: '200') }
   .actions
     = f.submit 'Save'
 = render 'event_types/form'
+= render 'entry_photos/form'

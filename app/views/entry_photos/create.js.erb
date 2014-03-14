@@ -1,0 +1,5 @@
+var template = $('.entry_photos .template').clone();
+template.removeClass('template');
+template.find('img').attr('src', '<%= @entry_photo.photo.url %>');
+template.find('input').val('<%= @entry_photo.id %>');
+template.appendTo('.entry_photos');
