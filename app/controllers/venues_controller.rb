@@ -41,6 +41,7 @@ class VenuesController < ApplicationController
   # POST /venues
   # POST /venues.json
   def create
+    params[:venue][:entry_photo_ids] = params[:venue][:entry_photo_ids] & current_user.entry_photo_ids
     @venue = current_user.venues.build(params[:venue])
 
     respond_to do |format|
