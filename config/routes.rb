@@ -3,10 +3,9 @@ Antikafe::Application.routes.draw do
 
   resources :events
 
+  devise_for :admins, controllers: { sessions: "admins/sessions" }
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-
-  devise_for :admins
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", sessions: "users/sessions" }
 
   resources :venues
 

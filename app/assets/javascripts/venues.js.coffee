@@ -24,6 +24,23 @@ $ ->
       ])
       handler.bounds.extendWith markers
       handler.map.centerOn(markers[0])
+  tab_on_error = (selector)->
+    $(selector).parents('.tab_container').find('.tab').hide()
+    $(selector).parents('.tab').show().end().parents('.form-group').addClass('has-error')
 
   $(document).on 'ajax:complete', '.photo a', ->
-    $(this).parents('.field').remove()
+    $(this).parents('.photo').remove()
+    show_photo_add()
+
+  $(document).on 'click', '#new_venue input:submit', ->
+    errors = false
+    $('.form-group').removeClass('has-error')
+    if $('#venue_price').val().length == 0 && $('#venue_price_room').val().length == 0
+      $('#venue_price').addClass('required')
+    $('input.required').each ->
+      if( $(this).val().length == 0)
+        tab_on_error(this)
+        errors = true
+
+    if errors
+      return false

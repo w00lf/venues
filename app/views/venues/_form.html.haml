@@ -1,40 +1,75 @@
 = simple_form_for @venue do |f|
-  .field
-    = f.input :title
-  .field
+  .tab_container
+    .container-fluid
+      .row-fluid
+        .span2
+          .tab_links
+            %ul
+              %li
+                = link_to t(:description), '#description'
+              %li
+                = link_to t(:address), '#address'
+              %li
+                = link_to t(:prices), '#prices'                
+              %li
+                = link_to t(:photos), '#photos'
+        .span8
+          .tab{ name: 'description' }
+            .form-group
+              = f.input :title
+              %span.error_text= t('errors.messages.blank')
+            .form-group
+              = f.input :capasity, as: :select, collection: (i=0; (10..90).step(10).map {|n| i += 1; i==1 ? ["#{t(:untill)} #{n}", n] : ["#{n} - #{n+10}", n] })
+            .form-group
+              = f.input :working_time
+            .form-group
+              %span.error_text= t('errors.messages.blank')
+              = f.input :description
+            .form-group
+              = f.association  :event_types, as: :check_boxes
+            = render 'event_types/form'
+            .pull-right.tab_move
+              = link_to 'Next', '#address'
+          .tab{ name: 'address' }
+            .form-group
+              = f.input :address
+              %span.error_text= t('errors.messages.blank')
+            .form-group
+              = f.input :metro
+            .form-group
+              = f.input :district
+            .pull-right.tab_move
+              = link_to 'Next', '#prices'
+            .pull-left.tab_move
+              = link_to 'Prev', '#description'
+          .tab{ name: 'prices'}
+            .form-group
+              = f.input :price
+              %span.error_text= t('errors.messages.blank')
+            .form-group
+              = f.input :price_room
+            .pull-left.tab_move
+              = link_to 'Prev', '#address'
+            .pull-right.tab_move
+              = link_to 'Next', '#photos'
+          .tab{ name: 'photos' }
+            .entry_photos
+              %ul
+                %li.form-group.template.photo
+                  = hidden_field_tag 'venue[entry_photo_ids][]'
+                  = image_tag('')
+                  = link_to '', method: :delete, remote: true do 
+                    %div.delete
+                - (@venue.new_record? ? current_user.entry_photos.not_linked : @venue.entry_photos).each do |entr|
+                  %li.form-group.photo
+                    = hidden_field_tag 'venue[entry_photo_ids][]', entr.id
+                    = image_tag(entr.photo.url)
+                    = link_to entry_photo_path(entr), method: :delete, remote: true do 
+                      %div.delete
+                %li.form-group.photo.add_sign
+            = render 'entry_photos/form'
+            .pull-left.tab_move
+              = link_to 'Prev', '#prices'
+            .actions.pull-right
+              = f.submit 'Save'
 
-    = f.input :description, as: :text
-  .field
-
-    = f.select :capasity, (10..100).step(10).map {|n| ["before #{n} man", n]}
-  .field
-
-    = f.input :price
-  .field
-
-    = f.input :working_time
-  .field
-
-    = f.input :address
-  .field
-
-    = f.input :metro
-  .field
-    = f.association  :event_types, as: :check_boxes
-  .entry_photos
-    .field.template.photo
-      = hidden_field_tag 'venue[entry_photo_ids][]'
-      = image_tag('')
-      = link_to '', method: :delete, remote: true do 
-        %div.delete
-
-    - @venue.entry_photos.each do |entr|
-      .field.photo
-        = hidden_field_tag 'venue[entry_photo_ids][]', entr.id
-        = image_tag(entr.photo.url)
-        = link_to entry_photo_path(entr), method: :delete, remote: true do 
-          %div.delete
-  .actions
-    = f.submit 'Save'
-= render 'event_types/form'
-= render 'entry_photos/form'

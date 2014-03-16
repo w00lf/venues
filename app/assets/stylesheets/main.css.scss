@@ -1,3 +1,20 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tab_links li {
+	list-style: none;
+}
+.has-error {
+  color: red;
+  font-weight: bold;
+}
+.form-group .error_text {
+  display: none;
+}
+.has-error .error_text {
+  display: block;
+}
+.has-error input {
+  border: 1px solid red;
+}

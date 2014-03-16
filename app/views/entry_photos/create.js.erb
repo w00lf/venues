@@ -3,4 +3,6 @@ template.removeClass('template');
 template.find('img').attr('src', '<%= @entry_photo.photo.url %>');
 template.find('input').val('<%= @entry_photo.id %>');
 template.find('a').attr('href', '<%= entry_photo_path(@entry_photo) %>');
-template.appendTo('.entry_photos');
+$('.entry_photos ul').prepend(template)
+if($('.entry_photos li').length > 11)
+  hide_photo_add()

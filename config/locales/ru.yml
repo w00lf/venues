@@ -120,7 +120,10 @@ ru:
       second: Секунд
       year: Год
   errors: &errors
+    wrong_file_format: Недопустимый формат файла, допускается только jpg/jpeg/png/gif файлы!
+    to_many_files: 'Вы указали слишком много файлов для загрузки, количество файлов, которое вы можете загрузить: '
     format: ! '%{attribute} %{message}'
+    prices_all_blank: Укажите одну из цен!
     messages:
       accepted: нужно подтвердить
       blank: не может быть пустым
@@ -257,3 +260,27 @@ ru:
   activerecord:
     errors:
       <<: *errors
+    models:
+      venue: Заведение
+    attributes:
+      venue:
+        title: Название
+        description: Описание
+        address: Адрес
+        district: Район
+        entry_photo_ids: Фотографии
+        metro: Метро
+        price: Цена аренды за час(за посетителя)
+        price_room: Цена аренды за час(комната)
+        working_time: Время работы
+        event_type_ids: Типы событий
+        capasity: Вместимость человек
+        event_types: Типы событий
+  create_caffe: Создать заведение
+  enter: Войти
+  leave: Выйти
+  description: Описание
+  prices: Цены
+  address: Адрес
+  photos: Фотографии
+  untill: До

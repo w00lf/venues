@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.17'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -19,7 +19,7 @@ group :development do
   gem 'pry', '0.9.12.2'
   gem 'pry-rails', '0.3.2'
   # gem "rack-insight"
-  gem 'debugger'
+  gem 'byebug'
 end
 
 # Gems used only for assets and not required
@@ -37,6 +37,7 @@ end
 gem 'jquery-rails'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem "less-rails"
 gem 'jquery-fileupload-rails'
 
 gem 'haml-rails'

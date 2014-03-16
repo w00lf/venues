@@ -5,4 +5,6 @@ class EntryPhoto < ActiveRecord::Base
     
   belongs_to :imageable, polymorphic: true
   belongs_to :user
+
+  scope :not_linked, where(imageable_id: nil)
 end

@@ -9,7 +9,7 @@
   width: 200px;
   position: relative; 
 }
-.entry_photos .field .delete {
+.entry_photos .form-group .delete {
   background: no-repeat url('cancel_upload.png');
   width: 15px;
   height: 15px;
@@ -19,4 +19,18 @@
 }
 .entry_photos .field img {
   width: 200px;
+}
+.entry_photos .photo {
+  width: 200px;
+  position: relative;
+  float: left;
+  list-style: none;
+  margin: 0 10px;
+}
+.add_sign {
+  background: no-repeat url('002B-500x500.png');
+  width: 200px;
+  height: 200px;
+  border: 1px solid grey;
+  cursor: pointer;
 }

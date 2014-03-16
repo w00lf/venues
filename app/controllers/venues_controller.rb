@@ -14,7 +14,8 @@ class VenuesController < ApplicationController
   # GET /venues/1
   # GET /venues/1.json
   def show
-    @venue = Venue.visible.find(params[:id])
+    # @venue = Venue.visible.find(params[:id])
+    @venue = Venue.find(params[:id]) 
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +26,7 @@ class VenuesController < ApplicationController
   # GET /venues/new
   # GET /venues/new.json
   def new
+    clear_uploaded
     @venue = Venue.new
 
     respond_to do |format|
@@ -35,13 +37,14 @@ class VenuesController < ApplicationController
 
   # GET /venues/1/edit
   def edit
+    clear_uploaded
     @venue = Venue.find(params[:id])
   end
 
   # POST /venues
   # POST /venues.json
   def create
-    params[:venue][:entry_photo_ids] = params[:venue][:entry_photo_ids] & current_user.entry_photo_ids
+    params[:venue][:entry_photo_ids] = params[:venue][:entry_photo_ids] & current_user.entry_photo_ids.map(&:to_s)
     @venue = current_user.venues.build(params[:venue])
 
     respond_to do |format|
@@ -81,5 +84,10 @@ class VenuesController < ApplicationController
       format.html { redirect_to venues_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def clear_uploaded
+    current_user.entry_photos.not_linked.destroy_all    
   end
 end

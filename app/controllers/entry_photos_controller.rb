@@ -3,7 +3,7 @@ class EntryPhotosController < ApplicationController
     @entry_photo = current_user.entry_photos.new(params[:entry_photo])
 
     respond_to do |format|
-      if @entry_photo.save
+      if current_user.entry_photos.not_linked.count < 10 && @entry_photo.save
         format.html { redirect_to :back, notice: 'Event was successfully created.' }
         format.json { render json: @entry_photo }
         format.js
