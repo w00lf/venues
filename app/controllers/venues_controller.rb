@@ -1,5 +1,6 @@
 class VenuesController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :edit, :update, :create]
+  before_filter :set_right_price_format
   # GET /venues
   # GET /venues.json
   def index
@@ -62,6 +63,7 @@ class VenuesController < ApplicationController
   # PUT /venues/1.json
   def update
     @venue = Venue.find(params[:id])
+    byebug
 
     respond_to do |format|
       if @venue.update_attributes(params[:venue])
@@ -87,6 +89,15 @@ class VenuesController < ApplicationController
   end
 
   private
+
+  def set_right_price_format
+    if params[:venue].present?
+      params[:venue].each do |indx, val|
+        params[:venue][indx] = Venue.change_price_format(val) if indx.to_s.include?('price')
+      end
+    end
+  end
+
   def clear_uploaded
     current_user.entry_photos.not_linked.destroy_all    
   end

@@ -4,7 +4,7 @@ class CreateVenues < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.integer :capasity
-      t.integer :price
+      t.decimal :price
       t.string :working_time
       t.string :address
       t.string :metro

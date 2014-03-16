@@ -21,9 +21,11 @@ task :copy_database_config, roles => :app do
   db_config = "#{shared_path}/database.yml"
   private_info = "#{shared_path}/private_info.yml"
   scema = "#{shared_path}/schema.rb"
+  ruby_vers = "#{shared_path}/.ruby-version"
   run "cp #{db_config} #{release_path}/config/database.yml"
   run "cp #{private_info} #{release_path}/config/private_info.yml"
   run "ln #{private_info} #{release_path}/db/schema.rb"
+  run "cp #{ruby_vers} #{release_path}/.ruby-version"
 end
 
 # В rails 3 по умолчанию включена функция assets pipelining,
