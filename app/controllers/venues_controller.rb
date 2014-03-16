@@ -63,7 +63,6 @@ class VenuesController < ApplicationController
   # PUT /venues/1.json
   def update
     @venue = Venue.find(params[:id])
-    byebug
 
     respond_to do |format|
       if @venue.update_attributes(params[:venue])

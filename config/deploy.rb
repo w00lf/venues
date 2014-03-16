@@ -24,7 +24,7 @@ task :copy_database_config, roles => :app do
   ruby_vers = "#{shared_path}/.ruby-version"
   run "cp #{db_config} #{release_path}/config/database.yml"
   run "cp #{private_info} #{release_path}/config/private_info.yml"
-  run "ln #{private_info} #{release_path}/db/schema.rb"
+  run "ln #{scema} #{release_path}/db/schema.rb"
   run "cp #{ruby_vers} #{release_path}/.ruby-version"
 end
 
