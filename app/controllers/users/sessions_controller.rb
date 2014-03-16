@@ -3,6 +3,6 @@ class Users::SessionsController < Devise::SessionsController
   before_filter :check_admin
 
   def check_admin
-    exit unless current_admin
+    redirect_to new_admin_session_path unless current_admin
   end
 end
